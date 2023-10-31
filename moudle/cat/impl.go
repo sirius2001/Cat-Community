@@ -7,6 +7,5 @@ type CatImpl struct {
 }
 
 func (impl *CatImpl) Create() error {
-
 	return nil
 }

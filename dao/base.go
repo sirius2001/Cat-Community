@@ -1,4 +1,4 @@
-package db
+package dao
 
 import (
 	"fmt"
@@ -24,3 +24,5 @@ func NewDao(dial string) *DB {
 		db: db,
 	}
 }
+
+

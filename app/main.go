@@ -1,10 +1,12 @@
 package main
 
 import (
-	"log/slog"
+	"github.com/sirius2001/Cat-Community/dao"
+	"github.com/sirius2001/Cat-Community/web"
 )
 
 func main() {
-
-	slog.Info("project successfully started !")
+	DB := dao.NewDao("")
+	router := web.NewRouter()
+	mananger.CreateMoudle("Cat", *DB, router.API.Group("/cat"))
 }
