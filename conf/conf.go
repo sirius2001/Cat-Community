@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"io"
 	"os"
-	"sync"
 )
 
 type Config struct {
@@ -24,7 +23,7 @@ type DBConfig struct {
 var config = &Config{}
 
 func loadConf() error {
-	exePath, err := os.Executable()
+	exePath, err := os.Getwd()
 	if err != nil {
 		return fmt.Errorf("load conf erro ,%v", err)
 	}
@@ -44,10 +43,10 @@ func loadConf() error {
 	return nil
 }
 func GetConfig() *Config {
-	sync.OnceFunc(func() {
-		if err := loadConf(); err != nil {
-			panic(err)
-		}
-	})
+
+	if err := loadConf(); err != nil {
+		return nil
+	}
+
 	return config
 }

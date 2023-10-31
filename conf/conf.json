@@ -1,0 +1,12 @@
+{
+  
+    "db_config":{
+        "db":"postgres",
+        "host":"your_host",
+        "port":"your_port",
+        "user":"user",
+        "password":"password",
+        "db_name":"db_name"
+    }
+  
+}

@@ -15,6 +15,7 @@ type DB struct {
 
 func NewDao(dial string) *DB {
 	conf := conf.GetConfig()
+
 	db, err := gorm.Open(conf.DBConfig.DB, fmt.Sprintf("host=%s port=%s user=%s dbname=%s password=%s sslmode=disable", conf.DBConfig.Host, conf.DBConfig.Port, conf.DBConfig.User, conf.DBConfig.DB, conf.DBConfig.Password))
 	if err != nil {
 		slog.Error("dial database erro:", err)
@@ -24,5 +25,3 @@ func NewDao(dial string) *DB {
 		db: db,
 	}
 }
-
-
