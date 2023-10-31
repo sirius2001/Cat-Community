@@ -13,6 +13,7 @@ const (
 
 type Moudle interface {
 	RegisterModel(api *gin.Engine, moudles map[string]Moudle)
+	SetApi(rg *gin.RouterGroup)
 }
 
 type MoudleMananger struct {
@@ -28,12 +29,4 @@ func GetMoudleMananger() *MoudleMananger {
 		}
 	})
 	return moudleManager
-}
-
-func (m *MoudleMananger) CreateModel(moudleName string) {
-	switch moudleName {
-	case CatMoudle:
-
-	}
-
 }

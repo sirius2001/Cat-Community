@@ -1,4 +1,4 @@
-package cat
+package area
 
 import (
 	"sync"
@@ -7,28 +7,22 @@ import (
 	"github.com/sirius2001/Cat-Community/moudle"
 )
 
-type CatMoudel struct {
-	Model Cat
-	Api   *CatApi
-	Impl  CatImpl
+type AreaMoudel struct {
+	Model Area
+	Api   AreaApi
+	Impl  AreaImpl
 }
 
 func NewCatModel() moudle.Moudle {
-	return &CatMoudel{}
+	return &AreaMoudel{}
 }
 
-func (m *CatMoudel) RegisterModel(api *gin.Engine, moudles map[string]moudle.Moudle) {
+func (m *AreaMoudel) RegisterModel(api *gin.Engine, moudles map[string]moudle.Moudle) {
 	m.registModel(moudles)
-	m.SetApi(api.Group("cat", nil))
-}
-
-func (m *CatMoudel) SetApi(rg *gin.RouterGroup) {
-	m.Api = NewApi(rg)
 }
 
 func (m *CatMoudel) registModel(moudles map[string]moudle.Moudle) {
 	sync.OnceFunc(func() {
 		moudles["Cat"] = NewCatModel()
 	})
-
 }
